@@ -229,7 +229,130 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Start/Stop Button — outlined style: white bg + dark border -->
+        <!-- Send Files Card (phone → browser) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sendFilesCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/gray_200"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/send_files_title"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        android:textColor="@color/gray_900"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/addSendFileButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:textSize="18sp"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textColor="@color/gray_700" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sharedFilesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/noSharedFilesText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_shared_files"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="@color/gray_500"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Clipboard Card (bidirectional) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/clipboardCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/gray_200"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clipboard_title"
+                    android:textAppearance="?textAppearanceSubtitle2"
+                    android:textColor="@color/gray_900"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/clipboardInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:gravity="top"
+                    android:hint="@string/clipboard_hint"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:textColor="@color/gray_900"
+                    android:textColorHint="@color/gray_300"
+                    android:background="@drawable/edittext_border"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:inputType="textMultiLine" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pushClipboardButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/clipboard_push"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_700"
+                    app:cornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/gray_300"
+                    app:backgroundTint="@color/white" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Start/Stop Button — outlined style -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/startStopButton"
             android:layout_width="match_parent"

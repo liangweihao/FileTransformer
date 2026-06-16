@@ -33,6 +33,16 @@
     <string name="time_hour_ago">%d 小时前</string>
     <string name="time_day_ago">%d 天前</string>
 
+    <!-- Send files & Clipboard -->
+    <string name="send_files_title">发送文件</string>
+    <string name="no_shared_files">点击 + 添加要分享的文件</string>
+    <string name="clipboard_title">剪贴板</string>
+    <string name="clipboard_hint">输入文字，推送到网页端…</string>
+    <string name="clipboard_push">推送到网页</string>
+    <string name="clipboard_pushed">已推送</string>
+    <string name="clipboard_received">已复制到剪贴板: %s…</string>
+    <string name="copied">已复制</string>
+
     <!-- Notification -->
     <string name="notification_title">文件传输运行中</string>
     <string name="notification_stop">停止</string>

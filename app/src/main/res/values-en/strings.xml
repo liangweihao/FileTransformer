@@ -33,6 +33,16 @@
     <string name="time_hour_ago">%d h ago</string>
     <string name="time_day_ago">%d d ago</string>
 
+    <!-- Send files & Clipboard -->
+    <string name="send_files_title">Send Files</string>
+    <string name="no_shared_files">Tap + to add files to share</string>
+    <string name="clipboard_title">Clipboard</string>
+    <string name="clipboard_hint">Type text to push to web page…</string>
+    <string name="clipboard_push">Push to Web</string>
+    <string name="clipboard_pushed">Pushed</string>
+    <string name="clipboard_received">Copied to clipboard: %s…</string>
+    <string name="copied">Copied</string>
+
     <!-- Notification -->
     <string name="notification_title">File Transfer Active</string>
     <string name="notification_stop">Stop</string>

@@ -34,7 +34,8 @@ class ServerForegroundService : Service() {
         val isRunning: Boolean = false,
         val ipAddress: String = "",
         val port: Int = FileTransferServer.DEFAULT_PORT,
-        val uploadProgress: UploadProgress = UploadProgress()
+        val uploadProgress: UploadProgress = UploadProgress(),
+        val receivedClipboardText: String = ""
     )
 
     private val _serverState = MutableStateFlow(ServerState())
@@ -86,15 +87,20 @@ class ServerForegroundService : Service() {
             saveLocationType = "downloads"
             customTreeUri = ""
 
-            // Wire progress callback to update the StateFlow
+            // Wire progress callback
             onUploadProgress = { progress ->
                 val current = _serverState.value
                 _serverState.value = current.copy(uploadProgress = progress)
-
-                // Add completed uploads to recent list
                 if (progress.status == UploadStatus.COMPLETE && progress.totalBytes > 0) {
                     Log.i(TAG, "Upload complete: ${progress.fileName} (${progress.totalBytes} bytes)")
                 }
+            }
+
+            // Wire clipboard received from browser → notify Activity
+            onClipboardReceived = { text ->
+                val current = _serverState.value
+                _serverState.value = current.copy(receivedClipboardText = text)
+                Log.i(TAG, "Clipboard received from browser: ${text.take(50)}...")
             }
 
             try {
@@ -132,6 +138,32 @@ class ServerForegroundService : Service() {
     fun updateSaveLocation(saveLocationType: String, customTreeUri: String) {
         server?.saveLocationType = saveLocationType
         server?.customTreeUri = customTreeUri
+    }
+
+    /** Push clipboard text from phone to the web page. */
+    fun pushClipboardToBrowser(text: String) {
+        server?.phoneClipboardText = text
+    }
+
+    /** Add a file to the shared download list. */
+    fun addSharedFile(displayName: String, absolutePath: String) {
+        server?.addSharedFile(displayName, absolutePath)
+    }
+
+    /** Remove a file from the shared download list. */
+    fun removeSharedFile(displayName: String) {
+        server?.removeSharedFile(displayName)
+    }
+
+    /** Clear all shared files. */
+    fun clearSharedFiles() {
+        server?.clearSharedFiles()
+    }
+
+    /** Clear the received clipboard text (call after processing). */
+    fun clearReceivedClipboard() {
+        val current = _serverState.value
+        _serverState.value = current.copy(receivedClipboardText = "")
     }
 
     override fun onDestroy() {
