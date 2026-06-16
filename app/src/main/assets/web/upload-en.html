@@ -170,9 +170,11 @@ var cbPollTimer=null,lastCbText='';
 document.getElementById('cbSend').addEventListener('click',function(){
   var text=document.getElementById('cbInput').value.trim();
   if(!text)return;
-  var x=new XMLHttpRequest(),f=new FormData();f.append('text',text);
+  var x=new XMLHttpRequest();
   x.addEventListener('load',function(){if(x.status===200){document.getElementById('cbInput').value='';alert('Sent')}});
-  x.open('POST','/clipboard');x.send(f);
+  x.open('POST','/clipboard');
+  x.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=utf-8');
+  x.send('text='+encodeURIComponent(text));
 });
 function pollClipboard(){
   var x=new XMLHttpRequest();

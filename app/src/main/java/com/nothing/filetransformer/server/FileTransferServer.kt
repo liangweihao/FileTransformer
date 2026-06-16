@@ -211,18 +211,19 @@ class FileTransferServer(
     // ── Clipboard (bidirectional) ────────────────────────────
 
     private fun receiveClipboard(session: IHTTPSession): Response {
-        try {
+        // Use URL-encoded body (not multipart) to correctly handle UTF-8 text.
+        val text = try {
             val files = mutableMapOf<String, String>()
             session.parseBody(files)
-            val text = session.parms?.get("text") ?: ""
-            if (text.isNotBlank()) {
-                onClipboardReceived?.invoke(text)
-                return newFixedLengthResponse(Response.Status.OK, MIME_JSON, """{"success":true}""")
-            }
-        } catch (_: Exception) {}
-        return newFixedLengthResponse(
-            Response.Status.BAD_REQUEST, MIME_JSON, """{"success":false,"error":"Empty text"}"""
-        )
+            session.parms?.get("text")?.trim() ?: ""
+        } catch (_: Exception) { "" }
+        if (text.isEmpty()) {
+            return newFixedLengthResponse(
+                Response.Status.BAD_REQUEST, MIME_JSON, """{"success":false,"error":"Empty text"}"""
+            )
+        }
+        onClipboardReceived?.invoke(text)
+        return newFixedLengthResponse(Response.Status.OK, MIME_JSON, """{"success":true}""")
     }
 
     private fun serveClipboard(): Response {
