@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Blue palette -->
+    <color name="blue_50">#E3F2FD</color>
+    <color name="blue_100">#BBDEFB</color>
+    <color name="blue_500">#1565C0</color>
+    <color name="blue_700">#0D47A1</color>
+    <color name="blue_900">#0A2E6E</color>
+
+    <!-- Neutrals -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_900">#212121</color>
+    <color name="black">#FF000000</color>
+
+    <!-- Accent -->
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_red">#EF5350</color>
+
+    <!-- Status indicator -->
+    <color name="status_running">#4CAF50</color>
+    <color name="status_stopped">#E0E0E0</color>
+</resources>

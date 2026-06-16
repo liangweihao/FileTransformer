@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">FileTransformer</string>
+
+    <!-- Main Activity -->
+    <string name="status_running">● Running</string>
+    <string name="status_stopped">○ Stopped</string>
+    <string name="ip_placeholder">Not connected</string>
+    <string name="copy_link">Copy Link</string>
+    <string name="start_server">Start Server</string>
+    <string name="stop_server">Stop Server</string>
+    <string name="save_location">Save location</string>
+    <string name="location_downloads">Downloads</string>
+    <string name="location_custom">Custom folder</string>
+    <string name="change">Change</string>
+    <string name="recent_uploads">Recent uploads</string>
+    <string name="no_uploads_yet">No uploads yet</string>
+
+    <!-- Receiving progress -->
+    <string name="receiving">Receiving</string>
+    <string name="receiving_status_saving">Saving…</string>
+    <string name="receiving_status_complete">Complete</string>
+    <string name="receiving_status_error">Failed</string>
+
+    <!-- Delete & history -->
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_confirm_title">Delete Record</string>
+    <string name="delete_confirm_msg">Delete the upload record for \"%s\"?</string>
+
+    <!-- Time formatting -->
+    <string name="time_just_now">just now</string>
+    <string name="time_min_ago">%d min ago</string>
+    <string name="time_hour_ago">%d h ago</string>
+    <string name="time_day_ago">%d d ago</string>
+
+    <!-- Notification -->
+    <string name="notification_title">File Transfer Active</string>
+    <string name="notification_stop">Stop</string>
+    <string name="notification_channel_name">File Transfer Service</string>
+    <string name="notification_channel_desc">Shows when the file transfer server is running</string>
+</resources>
